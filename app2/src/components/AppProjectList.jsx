@@ -30,18 +30,18 @@ export default function ProjectList() {
 
         <div>
             <Link
-                className="btn btn-success"
+                className="btn btn-success float-end mb-3"
                 to="/create">
                 Create new project
             </Link>
         </div>
 
-      <table>
+      <table className="table table-bordered">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Action</th>
+            <th className="col">Name</th>
+            <th className="col">Description</th>
+            <th className="col">Action</th>
           </tr>
         </thead>
         <tbody>

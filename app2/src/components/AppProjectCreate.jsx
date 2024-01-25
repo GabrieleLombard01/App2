@@ -1,4 +1,6 @@
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default function ProjectCreate() {
   function handleSave() {
@@ -15,15 +17,17 @@ export default function ProjectCreate() {
       });
   }
 
-  /*
-        Link -> list project
-        <>
+  return(
+    <>
+        <form action="">
+            <label className="form-label text-start fw-bold">Inserisci nome</label>
+            <input className="form-control" type="text" />
 
-            name:
-            description:
-            button onClick  handleSave
-
-    */
-
-  return <button onClick={handleSave}>Post</button>;
+            <label className="mt-2 form-label text-start fw-bold">Inserisci descrizione</label>
+            <input className="form-control" type="text" />
+        </form>
+      <button className="mt-3 btn btn-succes" onClick={handleSave}>Post</button>
+    </>
+    ) 
+    
 }
