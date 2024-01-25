@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Layout } from "./AppLayout";
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function ProjectList() {
   const [projectList, setProjectList] = useState([]);
@@ -25,6 +27,15 @@ export default function ProjectList() {
 
   return (
     <Layout>
+
+        <div>
+            <Link
+                className="btn btn-success"
+                to="/create">
+                Create new project
+            </Link>
+        </div>
+
       <table>
         <thead>
           <tr>
