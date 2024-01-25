@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Layout } from "./AppLayout";
 
 export default function ProjectList() {
+  const [projectList, setProjectList] = useState([]);
+
   useEffect(() => {
     fetchProjectList();
   }, []);
@@ -13,6 +15,7 @@ export default function ProjectList() {
       .then(function (response) {
         // fulfilled
         console.log(response.data);
+        setProjectList(response.data);
       })
       .catch(function (error) {
         // rejected
@@ -20,5 +23,27 @@ export default function ProjectList() {
       });
   };
 
-  return <Layout>Hello</Layout>;
+  return (
+    <Layout>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projectList.map((project, key) => {
+            return (
+              <tr key={key}>
+                <td>{project.name}</td>
+                <td>{project.description}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Layout>
+  );
 }
