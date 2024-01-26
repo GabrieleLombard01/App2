@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 export default function ProjectCreate() {
+
+  
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate();
 
   function handleSave() {
     axios
@@ -24,6 +27,7 @@ export default function ProjectCreate() {
         console.log(response.data);
         setName("");
         setDescription("");
+        navigate("/");
       })
       .catch(function (error) {
         Swal.fire({
