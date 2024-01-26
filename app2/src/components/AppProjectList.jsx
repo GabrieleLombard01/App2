@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Layout } from "./AppLayout";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 
 export default function ProjectList() {
   const [projectList, setProjectList] = useState([]);
@@ -28,11 +28,12 @@ export default function ProjectList() {
   return (
     <Layout>
 
+      <div className="container-sm">
         <div>
             <Link
-                className="btn btn-success float-end mb-3"
+                className="btn mt-3 btn-success float-end mb-3"
                 to="/create">
-                Create new project
+                <i className="fa-solid fa-plus"></i>
             </Link>
         </div>
 
@@ -50,11 +51,18 @@ export default function ProjectList() {
               <tr key={key}>
                 <td>{project.name}</td>
                 <td>{project.description}</td>
+                <td>
+                  <button className="float-end btn btn-danger"><i className="fa-solid fa-trash"></i></button>
+                  <button className="float-end me-2 btn btn-warning"><i className="fa-solid fa-pencil"></i></button>
+                  <button className="float-end me-2 btn btn-primary"><i className="fa-solid fa-eye"></i></button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      </div>
+
     </Layout>
   );
 }

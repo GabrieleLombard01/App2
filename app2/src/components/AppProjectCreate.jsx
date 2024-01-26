@@ -1,33 +1,74 @@
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 export default function ProjectCreate() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
   function handleSave() {
     axios
       .post("https://localhost:7138/api/projects", {
-        name: "newproject",
-        description: "newproject description",
+        name: name,
+        description: description,
       })
       .then(function (response) {
+        Swal.fire({
+          icon: "success",
+          title: "Projet saved successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        })
         console.log(response.data);
+        setName("");
+        setDescription("");
       })
       .catch(function (error) {
+        Swal.fire({
+          icon: "error",
+          title: "An error occurred!",
+          showConfirmButton: false,
+          timer: 1500,
+        })
         console.log(error);
       });
   }
 
-  return(
+  return (
     <>
-        <form action="">
-            <label className="form-label text-start fw-bold">Inserisci nome</label>
-            <input className="form-control" type="text" />
+      <div className="container-sm pt-5">
+        <form className="w-75 mx-auto" action="">
+          <label className="form-label text-start fw-bold">
+            Inserisci nome
+          </label>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            type="text"
+          />
 
-            <label className="mt-2 form-label text-start fw-bold">Inserisci descrizione</label>
-            <input className="form-control" type="text" />
+          <label className="mt-2 form-label text-start fw-bold">
+            Inserisci descrizione
+          </label>
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="form-control"
+            type="text"
+          />
         </form>
-      <button className="mt-3 btn btn-succes" onClick={handleSave}>Post</button>
+        <div className="w-75 mx-auto">
+        <Link className="btn btn-secondary mt-3" to="/">
+        <i className="fa-solid fa-arrow-left"></i>
+        </Link>
+          <button className="mt-3 float-end btn btn-success" onClick={handleSave}>
+            Post
+          </button>
+        </div>
+      </div>
     </>
-    ) 
-    
+  );
 }
