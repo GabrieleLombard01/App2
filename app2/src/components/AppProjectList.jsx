@@ -52,9 +52,12 @@ export default function ProjectList() {
                 <td>{project.name}</td>
                 <td>{project.description}</td>
                 <td>
-                  <button className="float-end btn btn-danger"><i className="fa-solid fa-trash"></i></button>
-                  <button className="float-end me-2 btn btn-warning"><i className="fa-solid fa-pencil"></i></button>
-                  <button className="float-end me-2 btn btn-primary"><i className="fa-solid fa-eye"></i></button>
+                <Link className="float-end btn btn-danger" to="/edit/${project.id}"><i className="fa-solid fa-trash"></i></Link>
+
+                  <Link className="float-end me-2 btn btn-warning" to={`/edit/${project.id}`}><i className="fa-solid fa-pencil"></i></Link>
+
+                  <Link className="float-end me-2 btn btn-primary" to="/edit/${project.id}"><i className="fa-solid fa-eye"></i></Link>
+
                 </td>
               </tr>
             );
