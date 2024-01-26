@@ -39,6 +39,7 @@ export default function ProjectCreate() {
   return (
     <>
       <div className="container-sm pt-5">
+      <h1 className="text-center text-primary">Create...</h1>
         <form className="w-75 mx-auto" action="">
           <label className="form-label text-start fw-bold">
             Inserisci nome
